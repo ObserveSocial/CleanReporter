@@ -26,7 +26,7 @@ enum ANSI {
     case clearScreen
     case moveCursorBack(times: Int)
     case moveCursorUp(times: Int)
-
+    
     // MARK: Colors
     case green
     case white
@@ -51,6 +51,8 @@ public class Reporter {
     public var lastIndentationLevel = 0
     public var totalTestsPassed = 0
     public var totalTestsFailed = 0
+    
+    public var failBlock: ((_ message: String, _ file: StaticString, _ line: UInt) -> Void)?
     
     public static let sharedInstance = Reporter()
     
@@ -181,5 +183,9 @@ extension Reporter: Focus.Reportable {
         printMessage += "👎  \(message), \(evaluation). File: \(file), Method: \(method), Line:\(line)"
         
         printFail(printMessage)
+        
+        if let failBlock = failBlock {
+            failBlock(message, file, line)
+        }
     }
 }
