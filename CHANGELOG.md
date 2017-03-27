@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+
+## [0.1.0] - 2017-03-26
+### Added
 - A reporter that logs out Observe blocks and Focus assertions.
 - Color coding for differentiation between passing and failing tests.
 
