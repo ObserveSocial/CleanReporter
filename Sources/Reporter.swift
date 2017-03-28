@@ -160,7 +160,7 @@ extension Reporter: Observe.Reportable {
 
 extension Reporter: Focus.Reportable {
     public func testPassed(file: StaticString, method: String, line: UInt, message: String, evaluation: String) {
-        totalTestsFailed+=1
+        totalTestsPassed+=1
         var printMessage = "  "
         
         for _ in 0...lastIndentationLevel {
@@ -173,7 +173,7 @@ extension Reporter: Focus.Reportable {
     }
     
     public func testFailed(file: StaticString, method: String, line: UInt, message: String, evaluation: String) {
-        totalTestsPassed+=1
+        totalTestsFailed+=1
         var printMessage = "  "
         
         for _ in 0...lastIndentationLevel {
